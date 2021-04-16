@@ -46,8 +46,8 @@ $ sudo vi /app/tomcat/conf/server.xml
 	type="javax.sql.DataSource"
 	driverClassName="oracle.jdbc.driver.OracleDriver"
 	url="jdbc:oracle:thin:@//xx.xx.xx.xx:1500/ECOLLECT"
-	username="ecol"
-	password="L#TTc011"
+	username="xxxxxx"
+	password="xxxxxx"
 	/>
 ````
 
