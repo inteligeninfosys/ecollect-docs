@@ -53,9 +53,12 @@ $ sudo vi /app/tomcat/conf/server.xml
 
 ##### Restart tomcat
 ```
-$ sudo ./app/tomcat/bin/catalina.sh stop
-$ sudo ./app/tomcat/bin/catalina.sh start
+$ cd /app/tomcat/bin && sudo ./catalina.sh stop
+$ cd /app/tomcat/bin && sudo ./catalina.sh start
 ```
+##### Confirm reports are up running
+From browser access http://xx.xx.xx.74:8080/birt
+
 ## 3. Docker containers
 Servers: [xx.xx.xx.71, xx.xx.xx.72, xx.xx.xx.74]\
 Change environment variables for docker containers. Stop the running container and start a new one with the DR connection details.
