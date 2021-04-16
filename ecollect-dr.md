@@ -10,7 +10,7 @@ Servers: [xx.xx.xx.71, xx.xx.xx.72, xx.xx.xx.74]\
 Change ***datasource.json*** with the DR connection details
 
 ```
-$ sudo vi /app/apis/ecollect_apis/server/datasource.json
+$ sudo vi /app/apis/ecollect_oracle/server/datasource.json
 {
   "oracle": {
     "host": "xx.xx.xx.xx",
