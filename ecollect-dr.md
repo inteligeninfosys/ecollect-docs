@@ -38,18 +38,17 @@ $ pm2 logs ecollect_apis
 Server: [xx.xx.xx.74]\
 Change tomcat JNDI Datasource configuration. Edit ***server.xml*** with the new database details
 ```
-$ sudo vi /app/tomcat/server/server.xml
+$ sudo vi /app/tomcat/conf/server.xml
 
-<Resource name="jdbc/ecollect" 
-	auth="Container" 
+<Resource
+	name="jdbc/ecollect"
+	auth="Container"
 	type="javax.sql.DataSource"
-        maxTotal="100" 
-        maxIdle="30" 
-        maxWaitMillis="10000"
-        username="ecol" 
-        password="xxx" 
-	driverClassName="oracle.jdbc.OracleDriver"
-        url="jdbc:mysql://xxxxx:3306/ECOLLECT"/>
+	driverClassName="oracle.jdbc.driver.OracleDriver"
+	url="jdbc:oracle:thin:@//xx.xx.xx.xx:1500/ECOLLECT"
+	username="ecol"
+	password="L#TTc011"
+	/>
 ````
 
 ##### Restart tomcat
