@@ -14,8 +14,8 @@ $ sudo vi /app/apis/ecollect_oracle/server/datasource.json
 {
   "oracle": {
     "host": "xx.xx.xx.xx",
-    "port": "1521",
-    "database": "ECOLLECT",
+    "port": "PORT",
+    "database": "DATABASE",
     "password": "xxx",
     "name": "oracle",
     "tns": "",
@@ -45,7 +45,7 @@ $ sudo vi /app/tomcat/conf/server.xml
 	auth="Container"
 	type="javax.sql.DataSource"
 	driverClassName="oracle.jdbc.driver.OracleDriver"
-	url="jdbc:oracle:thin:@//xx.xx.xx.xx:1500/ECOLLECT"
+	url="jdbc:oracle:thin:@//xx.xx.xx.xx:PORT/DATABASE"
 	username="xxxxxx"
 	password="xxxxxx"
 	/>
@@ -70,16 +70,16 @@ Change environment variables for docker containers. Stop the running container a
 $ docker stop oracledbapi
 $ docker start oracledbapibcs
 ```
-N/B: The following cmd are used to create the two containers. You **Do not** need to run these if the containers (oracledbapi, oracledbapibcs) already exists. Use ``` $ docker ps -a ```
+N/B: The following cmd are used to create the two containers. You **Do not** need to run these cmds if the containers (oracledbapi, oracledbapibcs) already exists. Use ``` $ docker ps -a ```
 ```
-$ docker run -d --name oracledbapi -e DB_DATABASE='ECOLLECT' -e DB_HOST='xx.xx.xx.xx' -e DB_PORT=1500 -e DB_PASSWORD='xxx' -e DB_USER='xxx' -p 6001:6001 migutak/oraclenode-apis-lb4:4.0.5
+$ docker run -d --name oracledbapi -e DB_DATABASE='DATABASE' -e DB_HOST='xx.xx.xx.xx' -e DB_PORT=PORT -e DB_PASSWORD='xxx' -e DB_USER='xxx' -p 6001:6001 migutak/oraclenode-apis-lb4:4.0.5
 
-$ docker run -d --name oracledbapibcs -e DB_DATABASE='ECOLLECT' -e DB_HOST='xx.xx.xx.xx' -e DB_PORT=1500 -e DB_PASSWORD='xxx' -e DB_USER='xxx' -p 6001:6001 migutak/oraclenode-apis-lb4:4.0.5
+$ docker run -d --name oracledbapibcs -e DB_DATABASE='DATABASEDR' -e DB_HOST='xx.xx.xx.xx' -e DB_PORT=PORT -e DB_PASSWORD='xxx' -e DB_USER='xxx' -p 6001:6001 migutak/oraclenode-apis-lb4:4.0.5
 ```
 Verify container running
 ```
 $ docker ps
-$ docker logs oracledbapi
+$ docker logs -f --tail 10 oracledbapi
 or
-$ docker logs oracledbapibcs
+$ docker logs -f --tail 10 oracledbapibcs
 ```
