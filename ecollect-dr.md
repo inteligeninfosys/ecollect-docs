@@ -110,19 +110,19 @@ The following are the list of PM2 Services
 
 Use ```pm2 list``` to list running services
 
-# Start all applications
+##### Start all applications
 ```
 pm2 start ecosystem.config.js
 ```
-# Start only the app named worker-app
+##### Start only the app named worker-app
 ```
 pm2 start ecosystem.config.js --only worker-app
 ```
-# Stop all
+##### Stop all
 ```
 pm2 stop ecosystem.config.js
 ```
-# Restart all
+##### Restart all
 ```
 pm2 start   ecosystem.config.js
 ## Or
