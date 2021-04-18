@@ -90,7 +90,8 @@ $ docker run -d --name oracledbapi --env-file /app/config/env.list -p 6001:6001 
 ## 4. PM2 Services
 Servers: [xx.xx.xx.71, xx.xx.xx.72, xx.xx.xx.74]\
 The following are the list of PM2 Services
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------| :-----|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
