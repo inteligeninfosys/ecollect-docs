@@ -90,8 +90,22 @@ $ docker run -d --name oracledbapi --env-file /app/config/env.list -p 6001:6001 
 ## 4. PM2 Services
 Servers: [xx.xx.xx.71, xx.xx.xx.72, xx.xx.xx.74]\
 The following are the list of PM2 Services
-| Left-Aligned  | Center Aligned  | Right Aligned |
+| Name  | Script Path  | Description |
 | :------------ |:---------------| :-----|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
+| activity_file_upload      | /app/upload_coop/activity_file_upload.js | upload docs |
+| adlogin      | /app/adlogin/index.js        |   adlogin login service |
+| dd_demandhis_monitor | /app/cronjobs_letters/demandhis_monitor.js        |    picks dd from dd_his queue and post to /api/demandshistory |
+| dd_generate | /app/cronjobs_letters/generate.js | generates dd letter details and sends to queue # check demands.log |
+| dd_send_demands | /app/cronjobs_letters/send_letters.js | queries all pending dd and sends through email |
+| dd_sms_monitor | /app/cronjobs_letters/sms_monitor.js | post sms messages to sms table |
+| dd_demand_status | /app/cronjobs_letters/demand_status.js | updates dd status, sentby and datesent |
+| demands_upload | /app/upload_coop/demands_upload.js |upload scanned d' letter
+| ecollect_apis | /app/apis/ecollect_oracle | APIs /api |
+| node-mail | /app/node-email/email.js | smtp email service
+| upload_coop | /app/upload_coop/index.js | uploads file |
+| xls_upload | /app/upload_coop/xls_uploads.js | upload xls data |
+| cronjobs | /app/cronjobs/qall.js | drop tqall,tcards and creates |
+| dailyletters(self-cure) | /app/cronjobs/index.js | update self cure |
+| self-cure-cc | /app/cronjobs/index_cc.js | update self cure cc| 
+
+Use ```pm2 list``` to list running services
