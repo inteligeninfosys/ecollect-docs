@@ -3,6 +3,7 @@ This documentation contains the steps to implement changes for DR
 1. Database connection jdbc
 2. Reports
 3. Docker containers 
+4. PM2 Services
 
 
 ## 1. Database connection jdbc
@@ -86,4 +87,10 @@ N/B: If the container **oracledbapi** does not exist, start it by (use ```docker
 ```
 $ docker run -d --name oracledbapi --env-file /app/config/env.list -p 6001:6001  migutak/oraclenode-apis-lb4:4.0.5
 ```
-
+## 4. PM2 Services
+Servers: [xx.xx.xx.71, xx.xx.xx.72, xx.xx.xx.74]\
+The following are the list of PM2 Services
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
