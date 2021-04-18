@@ -63,8 +63,6 @@ From browser access http://your-server:8080/birt/frameset?__report=test.rptdesig
 
 ## 3. Docker containers
 Servers: [xx.xx.xx.71, xx.xx.xx.72, xx.xx.xx.74]\
-Change environment variables for docker containers. Stop the running container and start a new one with the DR connection details.
-
 Change **env.list** with the DB details
 ```
 $ sudo /app/config/env.list
