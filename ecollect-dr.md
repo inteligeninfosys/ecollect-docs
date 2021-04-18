@@ -65,21 +65,27 @@ From browser access http://your-server:8080/birt/frameset?__report=test.rptdesig
 Servers: [xx.xx.xx.71, xx.xx.xx.72, xx.xx.xx.74]\
 Change environment variables for docker containers. Stop the running container and start a new one with the DR connection details.
 
-##### Stop & start DR container
+Change **env.list** with the DB details
 ```
-$ docker stop oracledbapi
-$ docker start oracledbapibcs
-```
-N/B: The following cmd are used to create the two containers. You **Do not** need to run these cmds if the containers (oracledbapi, oracledbapibcs) already exists. Use ``` $ docker ps -a ```
-```
-$ docker run -d --name oracledbapi -e DB_DATABASE='DATABASE' -e DB_HOST='xx.xx.xx.xx' -e DB_PORT=PORT -e DB_PASSWORD='xxx' -e DB_USER='xxx' -p 6001:6001 migutak/oraclenode-apis-lb4:4.0.5
+$ sudo /app/config/env.list
 
-$ docker run -d --name oracledbapibcs -e DB_DATABASE='DATABASEDR' -e DB_HOST='xx.xx.xx.xx' -e DB_PORT=PORT -e DB_PASSWORD='xxx' -e DB_USER='xxx' -p 6001:6001 migutak/oraclenode-apis-lb4:4.0.5
+DB_DATABASE=xxxx
+DB_HOST=xx.xx.xx.xx
+DB_PORT=xxxx
+DB_PASSWORD=xx
+DB_USER=xx
+```
+Restart the **oracledbapi** container
+```
+$ docker restart oracledbapi
 ```
 Verify container running
 ```
 $ docker ps
 $ docker logs -f --tail 10 oracledbapi
-or
-$ docker logs -f --tail 10 oracledbapibcs
 ```
+N/B: If the container **oracledbapi** does not exist, start it by (use ```docker ps -a```)
+```
+$ docker run -d --name oracledbapi --env-file /app/config/env.list -p 6001:6001  migutak/oraclenode-apis-lb4:4.0.5
+```
+
