@@ -57,7 +57,7 @@ $ cd /app/tomcat/bin && sudo ./catalina.sh stop
 $ cd /app/tomcat/bin && sudo ./catalina.sh start
 ```
 ##### Confirm reports are up running
-From browser access http://your-server:8080/birt/frameset?__report=test.rptdesign&sample=my+parameter
+From browser access http://your-server:8787/birt/frameset?__report=test.rptdesign&sample=my+parameter
 
 ![alt text](https://github.com/inteligeninfosys/ecollect-docs/blob/main/BRT_reprt_viewer_test.jpg?raw=true)
 
