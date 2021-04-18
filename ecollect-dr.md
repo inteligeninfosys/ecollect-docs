@@ -109,3 +109,22 @@ The following are the list of PM2 Services
 | self-cure-cc | /app/cronjobs/index_cc.js | update self cure cc| 
 
 Use ```pm2 list``` to list running services
+
+# Start all applications
+```
+pm2 start ecosystem.config.js
+```
+# Start only the app named worker-app
+```
+pm2 start ecosystem.config.js --only worker-app
+```
+# Stop all
+```
+pm2 stop ecosystem.config.js
+```
+# Restart all
+```
+pm2 start   ecosystem.config.js
+## Or
+pm2 restart ecosystem.config.js
+```
