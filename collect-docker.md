@@ -67,4 +67,4 @@ Confirm running
 $ docker ps | grep ecollect
 ```
 Navigate to https://52.117.54.216.nip.io \
-![alt text](https://github.com/inteligeninfosys/ecollect-docs/blob/main/ecollectapp.jpg?raw=true)
+![alt text](https://github.com/inteligeninfosys/ecollect-docs/blob/main/ecollectapp.JPG?raw=true)
