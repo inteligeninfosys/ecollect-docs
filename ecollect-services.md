@@ -1,4 +1,9 @@
 
+Copy apis project to /apps/apis directory
+```
+$ scp -r ecollect_apis root@51.117.54.216://apps/apis/
+```
+
 Generate pm2 process file
 ```
 $ pm2 ecosystem
