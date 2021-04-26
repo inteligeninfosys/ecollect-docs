@@ -3,6 +3,11 @@
 - nginx.conf 
 - ecollect.crt
 - ecollect.key
+
+For self signed certs, generate by
+```
+$ openssl req -newkey rsa:2048 -nodes -keyout ecollect.key -x509 -days 3065 -out ecollect.crt -subj "/C=US/ST=Nairobi/L=Nairobi/O=Inteligen/ CN=52.117.54.216.nip.io"
+```
 ## 1. New Deployment
 Build ecollect. From the project root folder run
 ```
