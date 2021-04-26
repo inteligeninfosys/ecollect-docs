@@ -1,0 +1,65 @@
+# E-Collect Application deployment
+## Prerequisites
+- nginx.conf 
+- ecollect.crt
+- ecollect.key
+## 1. New Deployment
+Build ecollect. From the project root folder run
+```
+$ ng build --prod
+```
+Copy the generate 'ecollect' folder into the server /app directory
+```
+$ scp -r ecollect root@52.117.54.216:/app/
+```
+Copy Server cert and key into the /app/certs directory
+```
+$ scp ecollect.crt root@52.117.54.216:/app/certs/
+$ scp ecollect.key root@52.117.54.216:/app/certs/
+```
+Copy nginx.conf into the /app/configs directory
+```
+$ scp nginx.conf root@52.117.54.216:/app/configs/
+```
+ssh into the server
+```
+$ ssh root@52.117.54.216
+```
+Start E-Collect
+```
+$ docker run -d --name ecollect -p 443:443
+-v /app/configs/nginx.conf:/etc/nginx/nginx.conf \
+-v /app/certs/ecollect.key:/etc/nginx/ecollect.key \
+-v /app/certs/ecollect.crt:/etc/nginx/ecollect.crt \
+-v /app/ecollect:/usr/share/nginx/html \
+nginx
+```
+Confirm running
+```
+$ docker ps | grep ecollect
+```
+Navigate to https://52.117.54.216.nip.io
+
+## 2. Update E-Collect
+Build ecollect. From the project root folder run
+```
+$ ng build --prod
+```
+Copy the generate 'ecollect' folder into the server /app directory
+```
+$ scp -r ecollect root@52.117.54.216:/app/
+```
+ssh into the server
+```
+$ ssh root@52.117.54.216
+```
+Restart E-Collect
+```
+$ docker restart ecollect
+```
+Confirm running
+```
+$ docker ps | grep ecollect
+```
+Navigate to https://52.117.54.216.nip.io \
+![alt text](https://github.com/inteligeninfosys/ecollect-docs/blob/main/ecollectapp.jpg?raw=true)
