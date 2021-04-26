@@ -41,8 +41,6 @@ $ pm2 start ecosystem.config.js --only ecollect_apis
 $ pm2 stop ecosystem.config.js
 
 #### Restart all
-$ pm2 start   ecosystem.config.js
-#### Or
 $ pm2 restart ecosystem.config.js
 
 #### Reload all
