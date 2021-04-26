@@ -32,7 +32,7 @@ $ ssh root@52.117.54.216
 ```
 Start E-Collect
 ```
-$ docker run -d --name ecollect -p 443:443
+$ docker run -d --name ecollect -p 443:443 \
 -v /app/configs/nginx.conf:/etc/nginx/nginx.conf \
 -v /app/certs/ecollect.key:/etc/nginx/ecollect.key \
 -v /app/certs/ecollect.crt:/etc/nginx/ecollect.crt \
