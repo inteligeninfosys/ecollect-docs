@@ -1,5 +1,5 @@
 
-Generate a sample process file you can type this command:
+Generate pm2 process file
 ```
 $ pm2 ecosystem
 File /root/ecosystem.config.js generated
@@ -32,21 +32,21 @@ module.exports = {
 };
 ```
 #### Start all applications
-pm2 start ecosystem.config.js
+$ pm2 start ecosystem.config.js
 
 #### Start only the app named ecollect_apis
-pm2 start ecosystem.config.js --only ecollect_apis
+$ pm2 start ecosystem.config.js --only ecollect_apis
 
 #### Stop all
-pm2 stop ecosystem.config.js
+$ pm2 stop ecosystem.config.js
 
 #### Restart all
-pm2 start   ecosystem.config.js
+$ pm2 start   ecosystem.config.js
 #### Or
-pm2 restart ecosystem.config.js
+$ pm2 restart ecosystem.config.js
 
 #### Reload all
-pm2 reload ecosystem.config.js
+$ pm2 reload ecosystem.config.js
 
 #### Delete all
-pm2 delete ecosystem.config.js
+$ pm2 delete ecosystem.config.js
