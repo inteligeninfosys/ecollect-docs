@@ -1,4 +1,5 @@
 
+### 1. New deployment
 Copy apis project to /apps/apis directory
 ```
 $ scp -r ecollect_apis root@51.117.54.216://apps/apis/
@@ -53,3 +54,22 @@ $ pm2 reload ecosystem.config.js
 
 #### Delete all
 $ pm2 delete ecosystem.config.js
+
+## 2. Update
+For updates\
+copy the updated .js ans .json files into /app/apis/ecollect_apis/common/models
+```
+$ cp filename.js filename.json /app/apis/ecollect_apis/common/models
+```
+If its a new model, edit model.json filea and add the model details
+```
+$ vi /app/apis/ecollect_apis/server/model.json
+"modelname": {
+    "dataSource": "oracle",
+    "public": true
+  }
+```
+restart pm2
+```
+$ pm2 start ecosystem.config.js --only ecollect_apis
+```
