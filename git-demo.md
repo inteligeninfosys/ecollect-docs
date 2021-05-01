@@ -2,7 +2,7 @@
 
 #### Git clone master branch
 ```
-$ git clone https://github.com/amaroko/ecollect10
+$ git clone https://github.com/inteligeninfosys/ecollectapp
 ```
 
 #### Start your feature branch
@@ -21,12 +21,11 @@ $ git commit -m "Finish a feature"
 ```
 #### Merge in the new-feature branch
 ```
-$ git checkout master
+$ git checkout main
 $ git merge new-feature
-$ git branch -d new-feature
 ```
 #### To delete your feauture banch
 ```
-$ git -d new-feature
+$ git branch -d new-feature
 ```
 
