@@ -92,3 +92,12 @@ The following enables connecting to EM Express from any host. Just connect to th
 $ exec dbms_xdb.setlistenerlocalaccess(false);
 PL/SQL procedure successfully completed.
 ```
+### Running SQL*Plus in a container
+You may use the same container image you used to start the database, to run sqlplus to connect to it, for example:
+```
+docker run --rm -ti oracle/database:19.3.0-ee sqlplus pdbadmin/<yourpassword>@//<db-container-ip>:1521/ORCLPDB1
+```
+Another option is to use docker exec and run sqlplus from within the same container already running the database:
+```
+docker exec -ti <container name> sqlplus pdbadmin@ORCLPDB1
+```
