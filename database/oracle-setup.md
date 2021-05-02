@@ -65,7 +65,9 @@ Parameters:
   ```
 Sample command to start a container would be
   ```
-  $ docker run --name myxedb --cpuset-cpus="0-7" -p 51521:1521 -p 55500:5500 -v /opt/oracle/oradata:/opt/oracle/oradata -e ORACLE_PWD=mysecurepassword -e ORACLE_CHARACTERSET=AL32UTF8 oracle/database:18.4.0-xe
+$ docker run -it -d --name myxedb --restart always --cpuset-cpus="0-7" -p 51521:1521 -p 55500:5500 -v /opt/oracle/oradata:/opt/oracle/oradata -e ORACLE_PWD=mysecurepassword -e ORACLE_CHARACTERSET=AL32UTF8 oracle/database:18.4.0-xe
+ 
+ORACLE_CHARACTERSET=AL32UTF8 oracle/database:18.4.0-xe
 ORACLE PASSWORD FOR SYS AND SYSTEM: mysecurepassword
 Specify a password to be used for database accounts. Oracle recommends that the password entered should be at least 8 characters in length, contain at least 1 uppercase character, 1 lower case character and 1 digit [0-9]. Note that the same password will be used for SYS, SYSTEM and PDBADMIN accounts:
 Confirm the password:
