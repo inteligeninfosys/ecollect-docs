@@ -104,9 +104,10 @@ Once the container has been started and the database created you can connect to 
    oracle      2310       1  0 12:20 ?        00:00:00 xe_pmon_XE
    root        2881    2874  0 12:24 pts/0    00:00:00 grep pmon
    
-   create user ecol identified by ecol;
-   quota unlimited on users;
-   grant connect, resource, dba to ecol;
+$ alter session set "_ORACLE_SCRIPT"=true;  
+$ create user ecol identified by ecol;
+$ GRANT UNLIMITED TABLESPACE TO ecol;
+$ grant connect, resource, dba to ecol;
   ```
 The Oracle Database inside the container also has Oracle Enterprise Manager Express configured. To access OEM Express, start your browser and follow the URL:
   ```
