@@ -65,13 +65,46 @@ Parameters:
   ```
 Sample command to start a container would be
   ```
-  docker run --name oracle -p 1521:1521 -p 5500:5500 -e ORACLE_PWD=root -v /opt/oracle/oradata:/opt/oracle/oradata oracle/database:18.4.0-xe
+  $ docker run --name myxedb --cpuset-cpus="0-7" -p 51521:1521 -p 55500:5500 -v /opt/oracle/oradata:/opt/oracle/oradata -e ORACLE_PWD=mysecurepassword -e ORACLE_CHARACTERSET=AL32UTF8 oracle/database:18.4.0-xe
+ORACLE PASSWORD FOR SYS AND SYSTEM: mysecurepassword
+Specify a password to be used for database accounts. Oracle recommends that the password entered should be at least 8 characters in length, contain at least 1 uppercase character, 1 lower case character and 1 digit [0-9]. Note that the same password will be used for SYS, SYSTEM and PDBADMIN accounts:
+Confirm the password:
+Configuring Oracle Listener.
+Listener configuration succeeded.
+Configuring Oracle Database XE.
+...
+Running Custom Scripts
+100% complete
+Database creation complete. For details check the logfiles at:
+ /opt/oracle/cfgtoollogs/dbca/XE.
+Database Information:
+Global Database Name:XE
+System Identifier(SID):XE
+Look at the log file "/opt/oracle/cfgtoollogs/dbca/XE/XE.log" for further details.
+
+Connect to Oracle Database using one of the connect strings:
+     Pluggable database: 1104d5676df7/XEPDB1
+     Multitenant container database: 1104d5676df7
+Use https://localhost:5500/em to access Oracle Enterprise Manager for Oracle Database XE
+The Oracle base remains unchanged with value /opt/oracle
+#########################
+DATABASE IS READY TO USE!
+#########################
   ```
 Once the container has been started and the database created you can connect to it just like to any other database:
   ```
   $ sqlplus sys/<your password>@//localhost:1521/XE as sysdba
   $ sqlplus system/<your password>@//localhost:1521/XE
   $ sqlplus pdbadmin/<your password>@//localhost:1521/XEPDB1
+  
+  [root@ecollect ~]# docker exec -it mydb /bin/bash
+   bash-4.2# ps -ef | grep pmon
+   oracle      2310       1  0 12:20 ?        00:00:00 xe_pmon_XE
+   root        2881    2874  0 12:24 pts/0    00:00:00 grep pmon
+   
+   create user ecol identified by ecol;
+   quota unlimited on users;
+   grant connect, resource, dba to ecol;
   ```
 The Oracle Database inside the container also has Oracle Enterprise Manager Express configured. To access OEM Express, start your browser and follow the URL:
   ```
@@ -101,3 +134,4 @@ Another option is to use docker exec and run sqlplus from within the same contai
 ```
 docker exec -ti <container name> sqlplus pdbadmin@ORCLPDB1
 ```
+Ref: https://github.com/oracle/docker-images/issues/1522 [Specified value of sga_target 1536M is too small, needs to be at least 1968M]
