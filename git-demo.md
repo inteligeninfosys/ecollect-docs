@@ -18,6 +18,7 @@ $ git commit -m "Start a feature"
 ```
 $ git add .
 $ git commit -m "Finish a feature"
+$ git push origin new-feature
 ```
 #### Merge in the new-feature branch
 ```
