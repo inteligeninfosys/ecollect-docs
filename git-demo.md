@@ -2,12 +2,12 @@
 
 #### Git clone master branch
 ```
-$ git clone https://github.com/inteligeninfosys/ecollectapp
+$ git clone https://github.com/inteligeninfosys/ecollect10
 ```
 
 #### Start your feature branch
 ```
-$ git checkout -b new-feature master
+$ git checkout -b new-feature main
 ```
 #### Edit/add some files
 ```
