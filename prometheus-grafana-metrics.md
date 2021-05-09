@@ -54,11 +54,12 @@ $ docker run -d --name grafana -p 3000:3000 grafana/grafana
 ```
 #### Integrate Grafana with Prometheus metrics
 You can now navigate to http://localhost:3000 and log in to Grafana with the default username admin and password admin. You can see the home page as follows
+
 ![alt text](https://github.com/inteligeninfosys/ecollect-docs/blob/main/grafana/grafana_home.png?raw=true)
 
 #### After that click on Add Data Source and select Prometheus
 
-![alt text](https://github.com/inteligeninfosys/ecollect-docs/blob/main/grafana/grafana_datasources.png?raw=true)
+![alt text](https://github.com/inteligeninfosys/ecollect-docs/blob/main/grafana/grafana_datasource.png?raw=true)
 
 #### Add HTTP URL as you defined in prometheus.yml
 
