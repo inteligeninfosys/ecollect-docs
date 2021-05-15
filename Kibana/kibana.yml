@@ -5,15 +5,11 @@
 # Default Kibana configuration for docker target
 server.name: kibana
 server.host: "0.0.0.0"
-elasticsearch.hosts: [ "http://es:9200" ]
+elasticsearch.hosts: [ "http://es01:9200" ]
 monitoring.ui.container.elasticsearch.enabled: true
-#
 server.ssl.enabled: true
 server.ssl.certificate: /etc/kibana/config/certs/domain.crt
 server.ssl.key: /etc/kibana/config/certs/domain.key
 #elasticsearch.ssl.certificateAuthorities: [ "/etc/kibana/config/certs/ca.crt" ]
 #server.basePath: /kibana
 # server.rewriteBasePath: true
-# docker run --name kib01 --net elastic -p 5601:5601 --rm -e "ELASTICSEARCH_HOSTS=http://es:9200" docker.elastic.co/kibana/kibana:7.12.1
-# docker run --name kib01 --net elastic -p 5601:5601 --rm -v ./kibana.yml:/usr/share/kibana/config/kibana.yml -v ./domain.crt:/etc/kibana/config/certs/domain.crt -v ./domain.key:/etc/kibana/config/certs/domain.key  docker.elastic.co/kibana/kibana:7.12.1
-
