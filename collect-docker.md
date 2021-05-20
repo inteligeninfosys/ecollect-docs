@@ -37,6 +37,7 @@ $ docker run -d --name ecollect -p 443:443 \
 -v /app/certs/ecollect.key:/etc/nginx/ecollect.key \
 -v /app/certs/ecollect.crt:/etc/nginx/ecollect.crt \
 -v /app/ecollect:/usr/share/nginx/html \
+-e TZ=Africa/Nairobi \
 nginx
 ```
 Confirm running
