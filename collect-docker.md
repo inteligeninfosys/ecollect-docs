@@ -38,6 +38,7 @@ $ docker run -d --name ecollect -p 443:443 \
 -v /app/certs/ecollect.crt:/etc/nginx/ecollect.crt \
 -v /app/ecollect:/usr/share/nginx/html \
 -e TZ=Africa/Nairobi \
+--log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
 nginx
 ```
 Confirm running
