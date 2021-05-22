@@ -1,5 +1,4 @@
 
-
 E-Collect app
 ```
 docker run -it -d --name ecollect --restart always \
@@ -58,3 +57,8 @@ docker run -it -d --name node-email -p 8005:8005 \
 --log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
 migutak/node-email:4.1
 ```
+adlogin
+```
+$ docker run -it -d --name adlogin -p 6650:6650 migutak/adlogin:4.1
+```
+
