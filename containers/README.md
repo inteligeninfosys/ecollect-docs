@@ -45,3 +45,16 @@ docker run -it -d --name docx -p 8004:8004 \
 --log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
 migutak/docxletters:4.1
 ```
+node-email
+```
+docker run -it -d --name node-email -p 8005:8005 \
+-e FILEPATH=/app/nfsmount/demandletters/ \
+-e IMAGEPATH=/home/ecollectadmin/docxletters/routes/ \,
+-e SMTPSERVER=office365.officer \,
+-e SMTPPORT=587 \,
+-e USER=xxxx@co-opbank.co.ke \,
+-e pass='xxx' \
+-e TZ=Africa/Nairobi \
+--log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
+migutak/node-email:4.1
+```
