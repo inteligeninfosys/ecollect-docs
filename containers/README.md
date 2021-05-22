@@ -13,40 +13,40 @@ docker run -it -d --name ecollect --restart always \
 ```
 2. ecollect-apis
 ```
-$ docker run -d --name ecollect_apis -p 8000:8000  
--e DB_DATABASE=xxxx
--e DB_HOST=xx.xx.xx.xx
--e DB_PORT=xxxx
--e DB_PASSWORD=xx
--e DB_USER=xx
+$ docker run -d --name ecollect_apis -p 8000:8000  --restart always \
+-e DB_DATABASE=xxxx \
+-e DB_HOST=xx.xx.xx.xx \
+-e DB_PORT=xxxx \
+-e DB_PASSWORD=xx \
+-e DB_USER=xx \
 -e TZ=Africa/Nairobi \
---log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
+--log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
 migutak/ecollect_apis:4.1
 ```
 3. oraclenodeapis
 ```
-$ docker run -d --name oracledbapi -p 6001:6001  
--e DB_DATABASE=xxxx
--e DB_HOST=xx.xx.xx.xx
--e DB_PORT=xxxx
--e DB_PASSWORD=xx
--e DB_USER=xx
+$ docker run -d --name oracledbapi -p 6001:6001 --restart always \
+-e DB_DATABASE=xxxx \
+-e DB_HOST=xx.xx.xx.xx \
+-e DB_PORT=xxxx \
+-e DB_PASSWORD=xx \
+-e DB_USER=xx \
 -e TZ=Africa/Nairobi \
---log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
+--log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
 migutak/oraclenode-apis-lb4:4.0.5
 ```
 4. docx
 ```
-docker run -it -d --name docx -p 8004:8004 \
+docker run -it -d --name docx -p 8004:8004 --restart always \
 -e FILEPATH=/app/nfsmount/demandletters/ \
 -e SENDEMAILURL=http://172.16.204.72:8005/ipfcancellation/email \
 -e TZ=Africa/Nairobi \
---log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
+--log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
 migutak/docxletters:4.1
 ```
 5. node-email
 ```
-docker run -it -d --name node-email -p 8005:8005 \
+docker run -it -d --name node-email -p 8005:8005 --restart always \
 -e FILEPATH=/app/nfsmount/demandletters/ \
 -e IMAGEPATH=/home/ecollectadmin/docxletters/routes/ \
 -e SMTPSERVER=office365.officer \
@@ -54,11 +54,21 @@ docker run -it -d --name node-email -p 8005:8005 \
 -e USER=xxxx@co-opbank.co.ke \
 -e pass='xxx' \
 -e TZ=Africa/Nairobi \
---log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
+--log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
 migutak/node-email:4.1
 ```
 6. adlogin
 ```
-$ docker run -it -d --name adlogin -p 6650:6650 migutak/adlogin:4.1
+$ docker run -it -d --name adlogin -p 6650:6650 --restart always \
+-e TZ=Africa/Nairobi \
+--log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
+migutak/adlogin:4.1
+```
+7. rabbitmq
+```
+$ docker run -it -d --name rabbitmq -p 5672:5672 -p 15672:15672 --restart always \
+-e TZ=Africa/Nairobi \
+--log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
+rabbitmq:3-management
 ```
 
