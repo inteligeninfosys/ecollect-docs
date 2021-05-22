@@ -1,5 +1,5 @@
 
-E-Collect app
+1. E-Collect app
 ```
 docker run -it -d --name ecollect --restart always \
 -v /app/certs/2021/ecollectweb.crt:/etc/nginx/ecollectweb.co-opbank.co.ke.crt \
@@ -11,7 +11,7 @@ docker run -it -d --name ecollect --restart always \
 -p 80:80 -p 443:443 \
 -e TZ=Africa/Nairobi nginx:coop
 ```
-ecollect-apis
+2. ecollect-apis
 ```
 $ docker run -d --name ecollect_apis -p 8000:8000  
 -e DB_DATABASE=xxxx
@@ -23,7 +23,7 @@ $ docker run -d --name ecollect_apis -p 8000:8000
 --log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
 migutak/ecollect_apis:4.1
 ```
-oraclenodeapis
+3. oraclenodeapis
 ```
 $ docker run -d --name oracledbapi -p 6001:6001  
 -e DB_DATABASE=xxxx
@@ -35,7 +35,7 @@ $ docker run -d --name oracledbapi -p 6001:6001
 --log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
 migutak/oraclenode-apis-lb4:4.0.5
 ```
-docx
+4. docx
 ```
 docker run -it -d --name docx -p 8004:8004 \
 -e FILEPATH=/app/nfsmount/demandletters/ \
@@ -44,7 +44,7 @@ docker run -it -d --name docx -p 8004:8004 \
 --log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
 migutak/docxletters:4.1
 ```
-node-email
+5. node-email
 ```
 docker run -it -d --name node-email -p 8005:8005 \
 -e FILEPATH=/app/nfsmount/demandletters/ \
@@ -57,7 +57,7 @@ docker run -it -d --name node-email -p 8005:8005 \
 --log-driver json-file --log-opt max-size=1k --log-opt max-file=30 \
 migutak/node-email:4.1
 ```
-adlogin
+6. adlogin
 ```
 $ docker run -it -d --name adlogin -p 6650:6650 migutak/adlogin:4.1
 ```
