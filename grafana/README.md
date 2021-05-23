@@ -3,10 +3,9 @@ specify the docker metrics-address
 ```
 $ /etc/docker/daemon.json
 {
-  "metrics-addr" : "127.0.0.1:9323",
+  "metrics-addr" : "0.0.0.0:9323",
   "experimental" : true
 }
-
 
 $ docker run -it -d --name grafana -p 3000:3000 grafana/grafana
 
