@@ -73,11 +73,15 @@ rabbitmq:3-management
 ```
 8. crondailyletters\
 update demandsdue set status = 'self cure' where status = 'pending' and accnumber not in (select accnumber from loans_stage)\
-insert into demandsdue active letters from tqall
+insert into demandsdue active letters from tqall\
+create table tqall as select * from qall \
+create table tcards as select * from qcards where primary = 'P'
 ```
-docker run -it -d --name crondailyletters --restart always \
+$ mkdir /app/cronlogs
+
+$ docker run -it -d --name crondailyletters --restart always \
 -e DB_USER=ecol -e DB_PASSWORD=ecol \
--e DB_CONNECTIONSTRING=52.117.54.217:1521/ORCLCDB.localdomain  \
+-e DB_CONNECTIONSTRING=xx.xx.54.217:1521/ORCLCDB.localdomain  \
 -v /app/cronlogs:/tmp \
 --label ofelia.enabled=true \
 --label ofelia.job-exec.crondailyletters-job.schedule="0 0 4 * * *" \
@@ -85,10 +89,30 @@ docker run -it -d --name crondailyletters --restart always \
 -e TZ=Africa/Nairobi \
 migutak/crondailyletters:5.0
 
-docker run -it -d --name crondailyletters-cron --restart always \
+$ docker run -it -d --name crondailyletters-cc --restart always \
+-e DB_USER=ecol -e DB_PASSWORD=ecol \
+-e DB_CONNECTIONSTRING=xx.xx.54.217:1521/ORCLCDB.localdomain  \
+-e SERVICENAME=Letters-cc \
+-v /app/cronlogs:/tmp \
+--label ofelia.enabled=true \
+--label ofelia.job-exec.crondailyletters-job.schedule="0 0 6 * * *" \
+--label ofelia.job-exec.crondailyletters-job.command="node index_cc.js >> /tmp/crondailyletters-cc.log 2>&1" \
+-e TZ=Africa/Nairobi \
+migutak/crondailyletters:5.0
+
+$ docker run -it -d --name cronqall --restart always \
+-e DB_USER=ecol -e DB_PASSWORD=ecol \
+-e DB_CONNECTIONSTRING=xx.xx.54.217:1521/ORCLCDB.localdomain  \
+-e SERVICENAME=qall \
+-v /app/cronlogs:/tmp \
+--label ofelia.enabled=true \
+--label ofelia.job-exec.crondailyletters-job.schedule="0 0 5 * * *" \
+--label ofelia.job-exec.crondailyletters-job.command="node index_cc.js >> /tmp/qall.log 2>&1" \
+-e TZ=Africa/Nairobi \
+migutak/crondailyletters:5.0
+
+$ docker run -it -d --name crondailyletters-cron --restart always \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
-    --label ofelia.job-local.crondailyletters-job.schedule="0 0 4 * * *" \
-    --label ofelia.job-local.crondailyletters-job.command="date" \
         mcuadros/ofelia:latest daemon --docker
 ```
 
