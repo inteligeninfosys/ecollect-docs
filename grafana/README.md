@@ -1,13 +1,13 @@
 
 specify the docker metrics-address
-
+```
 $ /etc/docker/daemon.json
 {
   "metrics-addr" : "127.0.0.1:9323",
   "experimental" : true
 }
 
-```
+
 $ docker run -it -d --name grafana -p 3000:3000 grafana/grafana
 
 $ docker run -it -d --name prometheus -v /root/prometheus.yml:/etc/prometheus/prometheus.yml -p 9090:9090 prom/prometheus
