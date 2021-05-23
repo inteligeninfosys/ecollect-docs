@@ -1,5 +1,5 @@
 
-specify the docker metrics-address
+Specify the docker metrics-address
 ```
 $ /etc/docker/daemon.json
 {
