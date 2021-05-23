@@ -71,4 +71,27 @@ $ docker run -it -d --name rabbitmq -p 5672:5672 -p 15672:15672 --restart always
 --log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
 rabbitmq:3-management
 ```
+8. crondailyletters
+update demandsdue set status = 'self cure' where status = 'pending' and accnumber not in (select accnumber from loans_stage)\
+insert into demandsdue active letters from tqall
+```
+docker run -it -d --name crondailyletters --restart always \
+-e DB_USER=ecol -e DB_PASSWORD=ecol \
+-e DB_CONNECTIONSTRING=52.117.54.217:1521/ORCLCDB.localdomain  \
+-v /app/cronlogs:/tmp \
+--label ofelia.enabled=true \
+--label ofelia.job-exec.crondailyletters-job.schedule="0 0 4 * * *" \
+--label ofelia.job-exec.crondailyletters-job.command="node index_manual.js >> /tmp/crondailyletters.log 2>&1" \
+-e TZ=Africa/Nairobi \
+migutak/crondailyletters:5.0
+
+docker run -it -d --name crondailyletters-cron --restart always \
+    -v /var/run/docker.sock:/var/run/docker.sock:ro \
+    --label ofelia.job-local.crondailyletters-job.schedule="0 0 4 * * *" \
+    --label ofelia.job-local.crondailyletters-job.command="date" \
+        mcuadros/ofelia:latest daemon --docker
+```
+
+
+
 
