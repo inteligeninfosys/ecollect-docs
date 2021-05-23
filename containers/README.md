@@ -118,12 +118,25 @@ $ docker run -it -d --name crondailyletters-cron --restart always \
 9. uploads_coop
 
 ```
-docker run -it -d --name uploads_coop -p 4000:4000 -p 3000:3000 --restart always \
+$ docker run -it -d --name uploads_coop -p 4000:4000 -p 3000:3000 --restart always \
 -e FILEPATH=/app/nfs/uploads/ \
 -e TZ=Africa/Nairobi \
 --log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
 migutak/uploads:5.0
 ```
+10. Demand letter delivery
 
+```
+$ docker run -it -d --name lettersdelivery --restart always \
+-e DB_USER=ecol -e DB_PASSWORD=ecol -e NODE_ORACLEDB_CONNECTIONSTRING=xx.xx.54.217:1521/ORCLCDB.localdomain \
+-e RABBITMQ=amqp://guest:guest@ecollectweb.co-opbank.co.ke \
+-e LETTERGENERATEURL=http://172.16.204.71:8004/docx/ \
+-e SENDEMAILURL=http://172.16.204.71:8005/demandemail/email \
+-e API=http://172.16.204.71:8000 \
+-e NODEAPI=http://172.16.204.71:6001/nodeapi \
+-e TZ=Africa/Nairobi \
+--log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
+migutak/letterdelivery:5.0
+```
 
 
