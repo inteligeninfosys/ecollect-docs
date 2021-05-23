@@ -115,7 +115,15 @@ $ docker run -it -d --name crondailyletters-cron --restart always \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
         mcuadros/ofelia:latest daemon --docker
 ```
+9. uploads_coop
 
+```
+docker run -it -d --name uploads_coop -p 4000:4000 -p 3000:3000 --restart always \
+-e FILEPATH=/app/nfs/uploads/ \
+-e TZ=Africa/Nairobi \
+--log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
+migutak/uploads:5.0
+```
 
 
 
