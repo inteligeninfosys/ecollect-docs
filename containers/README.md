@@ -71,7 +71,7 @@ $ docker run -it -d --name rabbitmq -p 5672:5672 -p 15672:15672 --restart always
 --log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
 rabbitmq:3-management
 ```
-8. crondailyletters
+8. crondailyletters\
 update demandsdue set status = 'self cure' where status = 'pending' and accnumber not in (select accnumber from loans_stage)\
 insert into demandsdue active letters from tqall
 ```
