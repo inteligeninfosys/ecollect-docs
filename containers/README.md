@@ -22,7 +22,7 @@ $ docker run -d --name ecollect_apis -p 8000:8000  --restart always \
 -e DB_USER=xx \
 -e TZ=Africa/Nairobi \
 --log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
-172.16.204.72:5100/ecollect_apis:4.1
+172.16.204.72:5100/ecollect_apis:4.2
 ```
 3. oraclenodeapis
 ```
@@ -49,14 +49,13 @@ docker run -it -d --name docx -p 8004:8004 --restart always \
 ```
 docker run -it -d --name node-email -p 8005:8005 --restart always \
 -e FILEPATH=/app/nfs/demandletters/ \
--e IMAGEPATH=/home/ecollectadmin/docxletters/routes/ \
 -e SMTPSERVER=office365.officer \
 -e SMTPPORT=587 \
 -e USER=xxxx@co-opbank.co.ke \
 -e pass='xxx' \
 -e TZ=Africa/Nairobi \
 --log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
-172.16.204.72:5100/node-email:4.1
+172.16.204.72:5100/node-email:4.2
 ```
 6. adlogin
 ```
