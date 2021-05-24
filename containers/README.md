@@ -15,7 +15,7 @@ docker run -it -d --name ecollect --restart always \
 ```
 $ docker run -d --name ecollect_apis -p 8000:8000  --restart always \
 -e DB_DATABASE=ECOLLECT \
--e REDIS_HOST=172.16.204.xx \
+-e REDIS_HOST=ecollectweb.co-opbank.co.ke \
 -e DB_HOST=xx.xx.xx.xx \
 -e DB_PORT=xxxx \
 -e DB_PASSWORD=xx \
@@ -39,7 +39,7 @@ $ docker run -d --name oracledbapi -p 6001:6001 --restart always \
 4. docx
 ```
 docker run -it -d --name docx -p 8004:8004 --restart always \
--e FILEPATH=/app/nfsmount/demandletters/ \
+-e FILEPATH=/app/nfs/demandletters/ \
 -e SENDEMAILURL=http://172.16.204.72:8005/ipfcancellation/email \
 -e TZ=Africa/Nairobi \
 --log-driver json-file --log-opt max-size=10m --log-opt max-file=30 \
@@ -48,7 +48,7 @@ docker run -it -d --name docx -p 8004:8004 --restart always \
 5. node-email
 ```
 docker run -it -d --name node-email -p 8005:8005 --restart always \
--e FILEPATH=/app/nfsmount/demandletters/ \
+-e FILEPATH=/app/nfs/demandletters/ \
 -e IMAGEPATH=/home/ecollectadmin/docxletters/routes/ \
 -e SMTPSERVER=office365.officer \
 -e SMTPPORT=587 \
